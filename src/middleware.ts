@@ -27,6 +27,16 @@ export default function middleware(
   request: NextRequest,
   event: NextFetchEvent,
 ) {
+  // Handle API routes with Clerk middleware but without i18n
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    return clerkMiddleware()(request, event);
+  }
+
+  // Handle public chat routes - no auth or i18n needed
+  if (request.nextUrl.pathname.startsWith('/chat/')) {
+    return NextResponse.next();
+  }
+
   if (
     request.nextUrl.pathname.includes('/sign-in')
     || request.nextUrl.pathname.includes('/sign-up')

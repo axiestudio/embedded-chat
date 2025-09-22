@@ -88,6 +88,7 @@
   },
   "DashboardLayout": {
     "home": "Home",
+    "chat_config": "Chat Config",
     "todos": "Todos",
     "members": "Members",
     "billing": "Billing",
@@ -112,6 +113,18 @@
   "OrganizationProfile": {
     "title_bar": "Organization Management",
     "title_bar_description": "Manage your organization"
+  },
+  "ChatConfig": {
+    "title_bar": "Chat Configuration",
+    "title_bar_description": "Configure your AI chat interface and connect to Axie Studio",
+    "api_section_title": "API Configuration",
+    "api_section_description": "Connect your Axie Studio workflow to power your chat interface",
+    "branding_section_title": "Branding & Design",
+    "branding_section_description": "Customize the appearance of your chat interface",
+    "preview_section_title": "Preview & Testing",
+    "preview_section_description": "Test your configuration and preview your chat interface",
+    "branding_coming_soon": "Branding customization coming soon...",
+    "preview_coming_soon": "Preview functionality coming soon..."
   },
   "Billing": {
     "title_bar": "Billing",

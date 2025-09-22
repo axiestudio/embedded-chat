@@ -1,5 +1,6 @@
 import {
   bigint,
+  boolean,
   pgTable,
   serial,
   text,
@@ -56,4 +57,46 @@ export const todoSchema = pgTable('todo', {
     .$onUpdate(() => new Date())
     .notNull(),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+});
+
+// Chat Configuration Schema
+export const chatConfigSchema = pgTable('chat_config', {
+  id: serial('id').primaryKey(),
+  organizationId: text('organization_id').notNull(),
+
+  // API Configuration
+  baseUrl: text('base_url').notNull(),
+  workflowId: text('workflow_id').notNull(),
+  apiKey: text('api_key').notNull(),
+
+  // Branding Configuration
+  companyName: text('company_name'),
+  logoUrl: text('logo_url'),
+  primaryColor: text('primary_color'),
+  secondaryColor: text('secondary_color'),
+  welcomeMessage: text('welcome_message'),
+
+  // Chat Interface Settings
+  chatTitle: text('chat_title'),
+  placeholderText: text('placeholder_text'),
+  isEnabled: boolean('is_enabled').default(true).notNull(),
+
+  // Public Access
+  publicSlug: text('public_slug').notNull(),
+
+  // Timestamps
+  updatedAt: timestamp('updated_at', { mode: 'date' })
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+}, (table) => {
+  return {
+    organizationIdIdx: uniqueIndex('chat_config_organization_id_idx').on(
+      table.organizationId,
+    ),
+    publicSlugIdx: uniqueIndex('chat_config_public_slug_idx').on(
+      table.publicSlug,
+    ),
+  };
 });

@@ -34,6 +34,10 @@ export default async function DashboardLayout(props: {
                 href: '/dashboard',
                 label: t('home'),
               },
+              {
+                href: '/dashboard/chat-config',
+                label: t('chat_config'),
+              },
               // PRO: Link to the /dashboard/todos page
               {
                 href: '/dashboard/organization-profile/organization-members',
