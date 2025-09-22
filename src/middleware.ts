@@ -37,11 +37,11 @@ export default function middleware(
         const locale
           = req.nextUrl.pathname.match(/(\/.*)\/dashboard/)?.at(1) ?? '';
 
-        const signInUrl = new URL(`${locale}/sign-in`, req.url);
+        const signInUrl = `${locale}/sign-in`;
 
         await auth.protect({
           // `unauthenticatedUrl` is needed to avoid error: "Unable to find `next-intl` locale because the middleware didn't run on this request"
-          unauthenticatedUrl: signInUrl.toString(),
+          unauthenticatedUrl: signInUrl,
         });
       }
 
