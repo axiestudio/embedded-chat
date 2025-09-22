@@ -15,8 +15,14 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-export default function DashboardLayout(props: { children: React.ReactNode }) {
-  const t = useTranslations('DashboardLayout');
+export default async function DashboardLayout(props: { 
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale: props.params.locale,
+    namespace: 'DashboardLayout',
+  });
 
   return (
     <>
